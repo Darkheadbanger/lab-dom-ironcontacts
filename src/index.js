@@ -1,5 +1,4 @@
 // HTML ELEMENTS
-const buttonAddRandom = document.querySelector("#btn-add-random");
 const tableBody = document.querySelector("tbody#contacts");
 
 // ITERATION 0 | Example Row
@@ -69,5 +68,19 @@ likeButton.forEach((oneCeleb) => {
 });
 
 // Bonus: ITERATION 4 - Add Random Contacts
+const buttonAddRandom = document.querySelector("#btn-add-random");
+buttonAddRandom.addEventListener("click", (e) => {
+  // 3. Ajouter la ligne au tableau (pas l'objet randomCeleb !)
+  tableBody.appendChild(exampleRow);
 
+  // 4. Ajouter les event listeners aux nouveaux boutons
+  const deleteBtn = exampleRow.querySelector(".btn-delete");
+  deleteBtn.addEventListener("click", (event) => {
+    event.currentTarget.parentNode.parentNode.remove();
+  });
 
+  const likeBtn = exampleRow.querySelector(".btn-like");
+  likeBtn.addEventListener("click", (e) => {
+    likeBtn.classList.toggle("selected");
+  });
+});
